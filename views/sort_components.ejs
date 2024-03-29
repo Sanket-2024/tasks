@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col" id="col1">
                     Total Number Of Entries: 100000
-                    <form action="/?page=1" method="get">
+                    <form action="/nodetask/sort_task09?page=1" method="get">
                         <select name="select" id="sort">
                             <option value="stuid">Id</option>
                             <option value="name">First Name</option>
@@ -60,13 +60,13 @@
                     <a href="&sort=<%=order%>">Sort</a> -->
                 </div>
                 <div class="col" id="col2">
-                    <a href="?page=1&select=<%=order_by%>&sort=<%=order%>"<%if(Number(p==1)){%>onclick='return false;'<%}%>><i class="fa-solid fa-angles-left"></i></a>
-                    <a href="?page=<%=Number(p)-1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==1)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angle-left"></i></a>
+                    <a href="/nodetask/sort_task09?page=1&select=<%=order_by%>&sort=<%=order%>"<%if(Number(p==1)){%>onclick='return false;'style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-left"></i></a>
+                    <a href="/nodetask/sort_task09?page=<%=Number(p)-1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==1)){%> onclick='return false;'style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
 
                     <span class="pages"><%=p%></span>
 
-                    <a href="?page=<%=Number(p)+1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angle-right"></i></a>
-                    <a href="?page=<%=lastpage%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'<%}%>><i class="fa-solid fa-angles-right"></i></a>
+                    <a href="/nodetask/sort_task09?page=<%=Number(p)+1%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="/nodetask/sort_task09?page=<%=lastpage%>&select=<%=order_by%>&sort=<%=order%>" <%if(Number(p==lastpage)){%> onclick='return false;'style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
 
                     
                 </div>
