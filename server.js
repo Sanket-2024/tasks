@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const l = require('./src/routes/authentication');
 const js = require('./src/routes/jsExcercise');
 const t05 = require('./src/routes/searching_task05');
+const t06 = require('./src/routes/filter_task06');
 const con = require('./src/config/connection');
 // const js = require('./src/routes/javascript');
 
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use("/",l);
 app.use("/jstask",js);
 app.use("/nodetask",t05);
+app.use("/nodetask",t06);
 
 app.listen("8888",()=>{
     console.log("Server is listening on port 8888!");
