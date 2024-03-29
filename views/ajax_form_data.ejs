@@ -34,18 +34,18 @@
 
 
                 <div id="f">
-                    <a href="?page=1" <%if(Number(p)==1){%>onclick='return false;' style="pointer-events: none"<%}%>><i
+                    <a href="/nodetask/crud/grid?page=1" <%if(Number(p)==1){%>onclick='return false;' style="pointer-events: none"<%}%>><i
                                 class="fa-solid fa-angles-left"></i></a>
-                    <a href="?page=<%=Number(p)-1%>" <%if(Number(p)==1){%> onclick='return false;'
+                    <a href="/nodetask/crud/grid?page=<%=Number(p)-1%>" <%if(Number(p)==1){%> onclick='return false;'
                         style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-left"></i></a>
     
                     <span class="pages">
                         <%=p%>
                     </span>
     
-                    <a href="?page=<%=Number(p)+1%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                    <a href="/nodetask/crud/grid?page=<%=Number(p)+1%>" <%if(Number(p)==lastpage){%> onclick='return false;'
                         style="pointer-events: none"<%}%>><i class="fa-solid fa-angle-right"></i></a>
-                    <a href="?page=<%=lastpage%>" <%if(Number(p)==lastpage){%> onclick='return false;'
+                    <a href="/nodetask/crud/grid?page=<%=lastpage%>" <%if(Number(p)==lastpage){%> onclick='return false;'
                         style="pointer-events: none"<%}%>><i class="fa-solid fa-angles-right"></i></a>
                 </div>
 
@@ -107,7 +107,7 @@
                             <td>
                                 <%= sd[0][i].zipcode%>
                             </td>
-                            <td><a href="/task11/UpdateData?page=<%=p%>&id=<%=sd[0][i].emp_id%>" target="_blank">View</a></td>
+                            <td><a href="/nodetask/crud/update?page=<%=p%>&id=<%=sd[0][i].emp_id%>" target="_blank">View</a></td>
                         </tr>
                     <%}%>
                 </table>
