@@ -10,6 +10,7 @@ const js = require('./src/routes/jsExcercise');
 const t05 = require('./src/routes/searching_task05');
 const t06 = require('./src/routes/filter_task06');
 const t07 = require('./src/routes/result_task07');
+const t08 = require('./src/routes/delimeter_search_task08');
 const con = require('./src/config/connection');
 
 // const js = require('./src/routes/javascript');
@@ -26,6 +27,7 @@ app.use("/jstask",js);
 app.use("/nodetask",t05);
 app.use("/nodetask",t06);
 app.use("/nodetask",t07);
+app.use("/nodetask",t08);
 
 app.listen("8888",()=>{
     console.log("Server is listening on port 8888!");
