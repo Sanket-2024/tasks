@@ -1,22 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 const md5 = require('md5');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const l = require('./src/routes/authentication');
-const js = require('./src/routes/jsExcercise');
+const js = require('./src/routes/js_excercise');
 const t05 = require('./src/routes/searching_task05');
 const t06 = require('./src/routes/filter_task06');
 const t07 = require('./src/routes/result_task07');
 const t08 = require('./src/routes/delimeter_search_task08');
 const t09 = require('./src/routes/sorting_task09');
-const t10 = require('./src/routes/fetchApi_task10');
-const t11 = require('./src/routes/crudAjax_task11');
+const t10 = require('./src/routes/fetch_api_task10');
+const t11 = require('./src/routes/crud_ajax_task11');
 const con = require('./src/config/connection');
 
-// const js = require('./src/routes/javascript');
 
 var app = express();
 app.use(cookieParser());

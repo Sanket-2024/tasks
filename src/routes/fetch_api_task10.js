@@ -1,5 +1,5 @@
 const express = require('express');
-const {fetchfun1, fetchfun2} = require("../controller/fetchApi_task10");
+const {fetchfun1, fetchfun2} = require("../controller/fetch_api_task10");
 const fetchroute = express.Router();
 
 fetchroute.route("/fetch_task10").get(fetchfun1);

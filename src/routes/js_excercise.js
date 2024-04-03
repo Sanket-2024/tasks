@@ -1,5 +1,5 @@
 const express = require('express');
-const {getDynamicTable, getKukuCube, getTicTacToe, getEvents} = require("../controller/jsExcercise");
+const {getDynamicTable, getKukuCube, getTicTacToe, getEvents} = require("../controller/js_excercise");
 const jsRoute = express.Router();
 
 jsRoute.route("/dynamic_table").get(getDynamicTable);
