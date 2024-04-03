@@ -30,10 +30,9 @@
             align-items: center;
             background-color: #45A29E;
             padding: 50px;
-            margin: 100px 0;
+            margin: 10px 0;
             width: 450px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
         }
 
         form {
@@ -73,18 +72,32 @@
         }
         ul{
             list-style-type: none;
-            display: flex;
-            gap:5px;
+            /* display: flex; */
+            /* gap:5px; */
             align-items: center;
             
         }
         nav{
-            float: right;
+            /* float: right; */
+            align-items: center;
+            text-align: center;
+        }
+        li{
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+        }
+        a{
+            color: black;
+            font-style: normal;
+        }
+        h1{
+            color: black;
         }
     </style>
 </head>
 
-<body>
+<body><center><h1>Tasks List</h1></center>
 
     <section class="section">
         <div class="container"> 
@@ -102,7 +115,6 @@
                     <li><a href="/nodetask/sort_task09">Sorting Task</a></li>
                     <li><a href="/nodetask/fetch_task10">Fetch Api Task</a></li>
                     <li><a href="/nodetask/crud">CRUD Operation</a></li>
-                    
                 </ul>
             </nav>
         </div>
