@@ -39,7 +39,7 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: grey;
             color: whitesmoke;
-            padding: 10px 25px;
+            /* padding: 10px 25px; */
         }
 
         #tr2 :nth-child(1) {
@@ -58,6 +58,21 @@
         }
         h1{
             color:whitesmoke;
+        }
+        
+        #signs table{
+            margin: 20px;
+        }
+        #tbl th,td{
+            background-color: white;
+            /* border: 1px solid black; */
+        }
+        h3{
+            color:whitesmoke;
+        }
+        .header1 td{
+            padding: 5px 10px;
+            background-color: grey;
         }
     </style>
 </head>
@@ -78,12 +93,40 @@
                             <%}%>
                     </form>
                 </div>
+                
             </center>
         </div>
     </section>
     <section class="section">
         <div class="container">
-            <div calss="table">
+            <div id="signs" class="table">
+                <center><h3>To do search use below mentioned delimeters</h3>
+                <table id="tbl">
+                    <tr class="header1">
+                        <td>Firstname</td>
+                        <td>Lastname</td>
+                        <td>Date of Birth</td>
+                        <td>Contact</td>
+                        <td>Email</td>
+                        <td>Current Address</td>
+                        <td>Permanant Address</td>
+                        <td>Age</td>
+                        <td>Created Date</td>
+                    </tr>
+                    <tr>
+                        <td>_</td>
+                        <td>^</td>
+                        <td>$</td>
+                        <td>{</td>
+                        <td>}</td>
+                        <td>:</td>
+                        <td>></td>
+                        <td><</td>
+                        <td>|</td>
+                    </tr>
+                </table></center>
+            </div>
+            <div calss="table"><center>
                 <table>
                     <tr class="header">
                         <td>Id</td>
@@ -132,7 +175,7 @@
                         </tr>
                         <%}%>
                 </table>
-            </div>
+            </div></center>
         </div>
     </section>
 </body>

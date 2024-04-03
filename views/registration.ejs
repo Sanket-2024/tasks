@@ -82,9 +82,7 @@
                 <center><div id="reg">Registration</div></center><br><br>
                 
 
-                    <%if(sqlselect[0][0]){%>
-
-                        
+                    <%if(sqlselect[0][0]){%>                        
 
                         <form id="form_1" method="POST" onsubmit="return sub()">
 
@@ -133,6 +131,8 @@
                                         id="email_span"></span><br><br>
 
                                     <input type="submit" name="Submit" value="Register" id="submitbtn">
+
+                                    <center><p>Already have an account <a href="/login">login ?</a></p></center>
 
                                 </form>
                                 <%}%>

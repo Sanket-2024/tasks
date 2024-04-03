@@ -1,10 +1,10 @@
 const express = require('express');
-const {getDynamicTable, getKukuCube, getTicTacToe, getEvents} = require("../controller/js_excercise");
-const jsRoute = express.Router();
+const {get_dynamic_table, get_kuku_cube, get_tictactoe, get_events} = require("../controller/js_excercise");
+const js_route = express.Router();
 
-jsRoute.route("/dynamic_table").get(getDynamicTable);
-jsRoute.route("/kuku_cube").get(getKukuCube);
-jsRoute.route("/tic_tac_toe").get(getTicTacToe);
-jsRoute.route("/event").get(getEvents);
+js_route.route("/dynamic_table").get(get_dynamic_table);
+js_route.route("/kuku_cube").get(get_kuku_cube);
+js_route.route("/tic_tac_toe").get(get_tictactoe);
+js_route.route("/event").get(get_events);
 
-module.exports = jsRoute; 
+module.exports = js_route; 

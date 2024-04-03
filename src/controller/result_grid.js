@@ -1,10 +1,4 @@
-var express = require('express');
-var a = require('../config/connection');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const md5 = require('md5');
-const jwt = require('jsonwebtoken');
+const a = require('../config/connection');
 
 const getresult = async (req, res) => {
 
@@ -19,7 +13,7 @@ const getresult = async (req, res) => {
 
             a.query(sql, (err, result) => {
                 if (err) throw err;
-                res.render('../views/resultView', { result, p, lastpage });
+                res.render('../views/result_page', { result, p, lastpage });
                 console.log(result);
             });
         } else {
@@ -48,7 +42,7 @@ const getresult_data = async (req, res) => {
                 a.query(sql2, (err, result2) => {
                     if (err) throw err;
                     console.log(result2);
-                    res.render('../views/dataView', { result1, result2, id });
+                    res.render('../views/result_grid', { result1, result2, id });
 
                 });
             });

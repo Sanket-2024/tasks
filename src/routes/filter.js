@@ -1,8 +1,8 @@
 const express = require('express');
-const {filter1} = require("../controller/filter_task06");
+const {filter} = require("../controller/filter");
 const filter_route = express.Router();
 
-filter_route.route("/filter").get(filter1);
+filter_route.route("/filter").get(filter);
 
 
 module.exports = filter_route; 

@@ -1,5 +1,5 @@
 const express = require('express');
-const {getresult,getresult_data} = require("../controller/result_task07");
+const {getresult,getresult_data} = require("../controller/result_grid");
 const resultroute = express.Router();
 
 resultroute.route("/result_task07").get(getresult);

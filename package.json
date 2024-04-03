@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/Sanket-2024/tasks/issues"
   },
-  "homepage": "https://github.com/Sanket-2024/tasks#readme"
+  "homepage": "https://github.com/Sanket-2024/tasks#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "md5": "^2.3.0",
+    "nodemon": "^3.1.0"
+  }
 }

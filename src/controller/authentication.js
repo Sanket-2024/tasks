@@ -97,7 +97,6 @@ const getpassword = async (req,res)=>{
     console.log(req.params.id);
     console.log(activationCode);
 
-
     const sql = ` SELECT * FROM registrationdetails_tbl WHERE id = ?`;
 
     const sqlselect = await a.promise().query(sql, [id]);
@@ -114,9 +113,9 @@ const postpassword = async (req,res)=>{
 
 // app.post('/activation/:id', async (req, res) => {
 
-    var id = req.params.id;
-    var re_entered_password = req.body.re_entered_password;
-    var sault = req.body.sault;
+    let id = req.params.id;
+    let re_entered_password = req.body.re_entered_password;
+    let sault = req.body.sault;
     console.log(re_entered_password);
     console.log(sault);
 

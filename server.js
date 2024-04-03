@@ -6,14 +6,14 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const l = require('./src/routes/authentication');
-const js = require('./src/routes/js_excercise');
-const t05 = require('./src/routes/searching_task05');
-const t06 = require('./src/routes/filter_task06');
-const t07 = require('./src/routes/result_task07');
-const t08 = require('./src/routes/delimeter_search_task08');
-const t09 = require('./src/routes/sorting_task09');
-const t10 = require('./src/routes/fetch_api_task10');
-const t11 = require('./src/routes/crud_ajax_task11');
+const js_route = require('./src/routes/js_excercise');
+const search_route = require('./src/routes/searching');
+const filter_route = require('./src/routes/filter');
+const result_grid = require('./src/routes/result_grid');
+const delimeter_search_route = require('./src/routes/delimeter_search');
+const sorting_route = require('./src/routes/sorting');
+const fetch_api_route = require('./src/routes/fetch_api');
+const crud_route = require('./src/routes/crud');
 const con = require('./src/config/connection');
 
 
@@ -25,14 +25,14 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.urlencoded({extended : true}));
 
 app.use("/",l);
-app.use("/jstask",js);
-app.use("/nodetask",t05);
-app.use("/nodetask",t06);
-app.use("/nodetask",t07);
-app.use("/nodetask",t08);
-app.use("/nodetask",t09);
-app.use("/nodetask",t10);
-app.use("/nodetask",t11);
+app.use("/jstask",js_route);
+app.use("/nodetask",search_route);
+app.use("/nodetask",filter_route);
+app.use("/nodetask",result_grid);
+app.use("/nodetask",delimeter_search_route);
+app.use("/nodetask",sorting_route);
+app.use("/nodetask",fetch_api_route);
+app.use("/nodetask",crud_route);
 
 app.listen("8888",()=>{
     console.log("Server is listening on port 8888!");

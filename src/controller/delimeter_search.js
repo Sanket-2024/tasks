@@ -1,20 +1,20 @@
 const express = require('express');
 const a = require('../config/connection');
-const bodyParser = require('body-parser');
+const body_parser = require('body-parser');
 const md5 = require('md5');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
+const cookie_parser = require('cookie-parser');
 const path = require('path');
 
 
-var app = express();
+const app = express();
 
-app.use(cookieParser());
+app.use(cookie_parser());
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(body_parser.urlencoded({ extended: true }));
 
 
-const getdelimeter = async (req, res) => {
+const get_delimeter = async (req, res) => {
 
     try {
         if (req.cookies.token) {
@@ -22,19 +22,19 @@ const getdelimeter = async (req, res) => {
 
             const data = req.query.s || "";
 
-            var name = [];
-            var lastname = [];
-            var dob = [];
-            var contact = [];
-            var email = [];
-            var address1 = [];
-            var address2 = [];
-            var age = [];
-            var created_date = [];
+            let name = [];
+            let lastname = [];
+            let dob = [];
+            let contact = [];
+            let email = [];
+            let address1 = [];
+            let address2 = [];
+            let age = [];
+            let created_date = [];
 
-            var sql = `select * ,DATE_FORMAT(dob, "%d/%m/%Y") as DOB,DATE_FORMAT(created_date, "%d/%m/%Y %T") as created_at From student_master`
+            let sql = `select * ,DATE_FORMAT(dob, "%d/%m/%Y") as DOB,DATE_FORMAT(created_date, "%d/%m/%Y %T") as created_at From student_master`
 
-            var response = await value(data);
+            let response = await value(data);
 
             response.forEach((r) => {
                 if (!sql.includes(" where ")) sql += " where ";
@@ -67,13 +67,13 @@ const getdelimeter = async (req, res) => {
 
             a.query(sql, (err, result) => {
                 if (err) console.log(err);
-                else res.render('../views/search_data', { result, data });
+                else res.render('../views/delimeter_search', { result, data });
             });
 
 
 
             async function value(data) {
-                var values = [];
+                let values = [];
                 let i = 0;
 
                 while (i < data.length) {
@@ -98,4 +98,4 @@ const getdelimeter = async (req, res) => {
 
 }
 
-module.exports = {getdelimeter};
+module.exports = {get_delimeter};
