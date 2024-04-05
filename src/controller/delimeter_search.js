@@ -1,12 +1,7 @@
 const express = require('express');
-const a = require('../config/connection');
+const db = require('../config/connection');
 const body_parser = require('body-parser');
-const md5 = require('md5');
-const jwt = require('jsonwebtoken');
 const cookie_parser = require('cookie-parser');
-const path = require('path');
-
-
 const app = express();
 
 app.use(cookie_parser());
@@ -18,10 +13,7 @@ const get_delimeter = async (req, res) => {
 
     try {
         if (req.cookies.token) {
-
-
             const data = req.query.s || "";
-
             let name = [];
             let lastname = [];
             let dob = [];
@@ -65,7 +57,7 @@ const get_delimeter = async (req, res) => {
 
             console.log(sql);
 
-            a.query(sql, (err, result) => {
+            db.query(sql, (err, result) => {
                 if (err) console.log(err);
                 else res.render('../views/delimeter_search', { result, data });
             });

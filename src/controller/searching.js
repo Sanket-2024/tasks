@@ -1,4 +1,4 @@
-const a = require('../config/connection');
+const db = require('../config/connection');
 
 const search_task = async (req, res) => {
 
@@ -9,8 +9,8 @@ const search_task = async (req, res) => {
 
                 const { stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator } = req.query;
 
-                const p = req.query.page || 1;
-                const offset = (Number(p) - 1) * 50;
+                const page = req.query.page || 1;
+                const offset = (Number(page) - 1) * 50;
                 
 
                 let query = `SELECT *,DATE_FORMAT(dob, "%d/%m/%Y") as DOB, DATE_FORMAT(created_date, "%d/%m/%Y %T") as created_at from student_master_tbl `
@@ -36,29 +36,29 @@ const search_task = async (req, res) => {
                 if (req.query['operator'] === 'OR') data = query.slice(0, -3);
 
                 if (data) {
-                    a.query(data, (err, result) => {
+                    db.query(data, (err, result) => {
                         if (err) console.log(err);
                         else {
-                            const maxlength = Math.ceil(result.length / 50);
-                            const query2 = data + limit;
-                            a.query(query2, (err, result) => {
+                            const max_length = Math.ceil(result.length / 50);
+                            let query_merge = data + limit;
+                            db.query(query_merge, (err, result) => {
                                 if (err) console.log(err);
                                 else {
-                                    res.render('../views/searching_task', { result, p, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength });
+                                    res.render('../views/searching_task', { result, page, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, max_length });
                                 }
                             })
                         }
                     })
                 } else {
-                    a.query(query, (err, result) => {
+                    db.query(query, (err, result) => {
                         if (err) console.log(err);
                         else {
-                            const maxlength = Math.ceil(result.length / 50);
-                            const query2 = query + limit;
-                            a.query(query2, (err, result) => {
+                            const max_length = Math.ceil(result.length / 50);
+                            let query_merge = query + limit;
+                            db.query(query_merge, (err, result) => {
                                 if (err) console.log(err);
                                 else {
-                                    res.render('../views/searching_task', { result, p, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, maxlength });
+                                    res.render('../views/searching_task', { result, page, stuid, name, lastname, dob, contact, email, address1, address2, age, created_date, operator, max_length });
                                 }
                             })
                         }
@@ -67,7 +67,6 @@ const search_task = async (req, res) => {
             } catch (error) {
                 console.log(error);
             }
-
 
         } else {
             res.redirect('/login');

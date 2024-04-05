@@ -2,8 +2,6 @@ const express = require('express');
 const body_parser = require('body-parser');
 const cookie_parser = require('cookie-parser');
 const path = require('path');
-
-
 const app = express();
 
 app.use(cookie_parser());

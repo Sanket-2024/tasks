@@ -12,19 +12,19 @@ const get_sort = async (req, res) => {
 
     try {
         if (req.cookies.token) {
-            const p = req.query.page || 1;
+            const page = req.query.page || 1;
             const limit = 200;
             const order = req.query.sort || 'asc';
             const order_by = req.query.select || 'stuid';
-            const offset = (p - 1) * limit;
+            const offset = (page - 1) * limit;
             const lastpage = Math.ceil(100000 / limit);
 
-            let sql = `SELECT * FROM student_master_tbl ORDER BY ${order_by} ${order} LIMIT ${limit} offset ${offset}`
+            let student_data = `SELECT * FROM student_master_tbl ORDER BY ${order_by} ${order} LIMIT ${limit} offset ${offset}`
 
-            db.query(sql, function (err, result) {
+            db.query(student_data, function (err, result) {
                 if (err) throw err;
                 const keys = Object.keys(result[0]);
-                res.render('../views/sorting_page', { result, p, order_by, keys, order, lastpage });
+                res.render('../views/sorting_page', { result, page, order_by, keys, order, lastpage });
                 
             });
         } else {

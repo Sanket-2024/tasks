@@ -55,7 +55,7 @@
 <body><center><br><h1>Sanket Patel 24DEV087 sorting</h1></center>
     <section>
         <div class="container">
-            <%- include('../views/partials/sorting_components',{p,order_by,order})%>
+            <%- include('../views/partials/sorting_components',{page,order_by,order})%>
         </div>
     </section>
     <section>
@@ -64,44 +64,44 @@
                 <table>
                     <tr class="heading">
                         <td calss="header">Id
-                            <a href="?page=<%=p%>&select=<%=keys[0]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[0]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[0]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[0]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">First Name
-                            <a href="?page=<%=p%>&select=<%=keys[1]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[1]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[1]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[1]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Last Name
-                            <a href="?page=<%=p%>&select=<%=keys[2]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[2]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[2]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[2]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Date of Birth
-                            <a href="?page=<%=p%>&select=<%=keys[3]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[3]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[3]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[3]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Contact Number
-                            <a href="?page=<%=p%>&select=<%=keys[4]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[4]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[4]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[4]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Email Address
-                            <a href="?page=<%=p%>&select=<%=keys[5]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[5]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[5]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[5]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Permanent Address
-                            <a href="?page=<%=p%>&select=<%=keys[6]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[6]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[6]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[6]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Current Address
-                            <a href="?page=<%=p%>&select=<%=keys[7]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[7]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[7]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[7]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Age
-                            <a href="?page=<%=p%>&select=<%=keys[8]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[8]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[8]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[8]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                         <td calss="header">Created Date
-                            <a href="?page=<%=p%>&select=<%=keys[9]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
-                            <a href="?page=<%=p%>&select=<%=keys[9]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[9]%>&sort=asc"><i class="fa-solid fa-arrow-up"></i></a>
+                            <a href="?page=<%=page%>&select=<%=keys[9]%>&sort=desc"><i class="fa-solid fa-arrow-down"></i></a>
                         </td>
                     </tr>
                     <%for(let i=0;i<result.length; i++){ %>

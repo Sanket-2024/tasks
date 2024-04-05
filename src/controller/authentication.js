@@ -1,48 +1,48 @@
 const express = require('express');
-const a = require('../config/connection');
-const bodyParser = require('body-parser');
+const db = require('../config/connection');
+const body_parser = require('body-parser');
 const md5 = require('md5');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-const path = require('path');
+const cookie_parser = require('cookie-parser');
 
 
-var app = express();
 
-app.use(cookieParser());
+const app = express();
+
+app.use(cookie_parser());
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(body_parser.urlencoded({ extended: true }));
 
-const getregister = async (req,res)=>{
+const get_register = async (req,res)=>{
 
     // app.get('/', async (req, res) => {
 
-    var sqlselect = [[]];
-    var sqlcheckselect = [[]];
-    var hours = 0;
+    let sqlselect = [[]];
+    let sqlcheckselect = [[]];
+    let hours = 0;
 
     res.render("../views/registration", { sqlselect, hours, sqlcheckselect });
 
 };
 
-const postregister = async (req, res)=>{
+const post_register = async (req, res)=>{
 
     // app.post('/', async (req, res) => {
 
-    var fname = req.body.fname;
-    var lname = req.body.lname;
-    var email = req.body.email;
-    var id = null;
-    var activationCode = null;
-    var hours = null;
-    var sqlselect = [[]];
+    let fname = req.body.fname;
+    let lname = req.body.lname;
+    let email = req.body.email;
+    let id = null;
+    // let activationCode = null;
+    let hours = null;
+    let sqlselect = [[]];
 
 
     const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     console.log(arr.length);
 
-    var sault = "";
-    var activationCode = "";
+    let sault = "";
+    let activationCode = "";
 
     for (let i = 0; i < 4; i++) {
 
@@ -59,9 +59,9 @@ const postregister = async (req, res)=>{
     console.log(sault);
     console.log(activationCode);
 
-    var sqlcheck = `SELECT * FROM registrationdetails_tbl WHERE email = '${email}'`;
+    let sqlcheck = `SELECT * FROM registrationdetails_tbl WHERE email = '${email}'`;
 
-    const sqlcheckselect = await a.promise().query(sqlcheck);
+    const sqlcheckselect = await db.promise().query(sqlcheck);
     console.log(sqlcheckselect);
 
     if (sqlcheckselect[0][0]) {
@@ -69,9 +69,9 @@ const postregister = async (req, res)=>{
     } else {
 
 
-        var sql = `INSERT INTO registrationdetails_tbl(firstname, lastname, email, sault, activation_code) VALUES(?,?,?,?,?);`
+        let sql = `INSERT INTO registrationdetails_tbl(firstname, lastname, email, sault, activation_code) VALUES(?,?,?,?,?);`
 
-        const regInsert = await a.promise().query(sql, [fname, lname, email, sault, activationCode], (err, result) => {
+        const regInsert = await db.promise().query(sql, [fname, lname, email, sault, activationCode], (err, result) => {
             if (err) throw err;
             // console.log(result);
 
@@ -87,7 +87,7 @@ const postregister = async (req, res)=>{
 
 };
 
-const getpassword = async (req,res)=>{
+const get_password = async (req,res)=>{
 
 // app.get('/activation/:id', async (req, res) => {
 
@@ -99,17 +99,17 @@ const getpassword = async (req,res)=>{
 
     const sql = ` SELECT * FROM registrationdetails_tbl WHERE id = ?`;
 
-    const sqlselect = await a.promise().query(sql, [id]);
+    const sqlselect = await db.promise().query(sql, [id]);
     console.log(sqlselect);
 
-    var diff = new Date().valueOf() - sqlselect[0][0].created_date.valueOf();
+    let diff = new Date().valueOf() - sqlselect[0][0].created_date.valueOf();
     let hours = Math.floor(diff / (1000 * 60 * 60));
 
     res.render("../views/registration", { id, sqlselect, sqlcheckselect, activationCode, hours });
 
 };
 
-const postpassword = async (req,res)=>{
+const post_password = async (req,res)=>{
 
 // app.post('/activation/:id', async (req, res) => {
 
@@ -123,38 +123,38 @@ const postpassword = async (req,res)=>{
     console.log(re_entered_password + sault);
     console.log(passwordMd5);
 
-    var updatesql = `UPDATE registrationdetails_tbl SET password='${passwordMd5}' WHERE  id = '${id}'`;
+    let updatesql = `UPDATE registrationdetails_tbl SET password='${passwordMd5}' WHERE  id = '${id}'`;
 
-    const updatePassword = await a.promise().query(updatesql);
+    const updatePassword = await db.promise().query(updatesql);
 
     console.log(updatePassword);
     res.render('../views/log', { id });
 
 };
 
-const getlogin = async(req,res)=>{ 
+const get_login = async(req,res)=>{ 
 
 // app.get('/login', (req, res) => {
 
     const id = req.params.id || "";
-    var username = null;
-    var password = null;
+    let username = null;
+    let password = null;
 
     res.render('../views/login', { id, username, password });
 
 };
 
 
-const postlogin = async (req,res)=>{
+const post_login = async (req,res)=>{
 // app.post('/login', async (req, res) => {
 
     const id = req.params.id || "";
     const username = req.body.username;
     const password = req.body.password;
 
-    var sql = `SELECT * FROM registrationdetails_tbl WHERE email = '${username}'`;
+    let sql = `SELECT * FROM registrationdetails_tbl WHERE email = '${username}'`;
 
-    const registrationData = await a.promise().query(sql);
+    const registrationData = await db.promise().query(sql);
     console.log(registrationData);
 
     const passwordMd5 = md5(password + registrationData[0][0].sault);
@@ -191,4 +191,4 @@ const home = async (req,res)=>{
     }
 };
 
-module.exports = {postregister, postlogin, getpassword, postpassword, getlogin, getregister, home};
+module.exports = {post_register, post_login, get_password, post_password, get_login, get_register, home};

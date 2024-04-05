@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
     <header>
-        <title>27-02-2024</title>
+        <title>filter</title>
         <style>
             *{
                 box-sizing: border-box;
@@ -48,7 +48,7 @@
     <body>
         <section><center><h3>Sanket Patel 28-02-2024  24DEV087</h3></center><br>
             <div class="container">
-                <%- include('../views/partials/filter_component',{p,m})%>
+                <%- include('../views/partials/filter_component',{page,month})%>
             </div>
         </section>
         <section>
@@ -68,13 +68,13 @@
                         <td><%= result[i].stuid %></td>
                         <td><%= result[i].name %></td>
                         <td><%= result[i].presentDay%></td>
-                        <% if(m=='december2023'){%>
+                        <% if(month=='december2023'){%>
                         <td><%= parseFloat((result[i].presentDay/31)*100).toFixed(2)%>%</td>
                         <%}%>
-                        <% if(m=='january2024'){%>
+                        <% if(month=='january2024'){%>
                             <td><%= parseFloat((result[i].presentDay/31)*100).toFixed(2)%>%</td>
                         <%}%>
-                        <% if(m=='february2024'){%>
+                        <% if(month=='february2024'){%>
                             <td><%= parseFloat((result[i].presentDay/29)*100).toFixed(2)%>%</td>
                         <%}%>
                         <td></td>

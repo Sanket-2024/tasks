@@ -1,8 +1,8 @@
 const express = require('express');
-const {getresult,getresult_data} = require("../controller/result_grid");
-const resultroute = express.Router();
+const {get_result,get_result_data} = require("../controller/result_grid");
+const result_route = express.Router();
 
-resultroute.route("/result_task07").get(getresult);
-resultroute.route("/result_task07/data").get(getresult_data);
+result_route.route("/result_task07").get(get_result);
+result_route.route("/result_task07/data").get(get_result_data);
 
-module.exports = resultroute; 
+module.exports = result_route; 
