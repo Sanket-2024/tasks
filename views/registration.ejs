@@ -172,61 +172,28 @@
 
             function sub() {
 
-                var fname_id = document.getElementById("fname_id");
-                var lname_id = document.getElementById("lname_id");
-                var email_id = document.getElementById("email_id");
+                let fname_id = document.getElementById("fname_id");
+                let lname_id = document.getElementById("lname_id");
+                let email_id = document.getElementById("email_id");
 
 
-                var fname_span = document.getElementById("fname_span");
-                var lname_span = document.getElementById("lname_span");
-                var email_span = document.getElementById("email_span");
+                let fname_span = document.getElementById("fname_span");
+                let lname_span = document.getElementById("lname_span");
+                let email_span = document.getElementById("email_span");
 
-
-                console.log(fname_id);
-                console.log(lname_id);
-                console.log(email_id);
-
-
-                var res1 = first_name(fname_id, fname_span);
-                var res2 = first_name(lname_id, lname_span);
-                var res3 = ValidateEmail(email_id, email_span);
-
-
+                let res1 = first_name(fname_id, fname_span);
+                let res2 = first_name(lname_id, lname_span);
+                let res3 = ValidateEmail(email_id, email_span);
 
                 if (res1 == true && res2 == true && res3 == true) {
-
                     return true;
                 } else {
                     return false;
                 }
-
-                // submit();
-
             }
 
-
-            // async function submit(){
-            //             let formData = document.getElementById("form_1");
-            //             let data = new FormData(formData);
-            //             const params = new URLSearchParams(data);
-            //             const jobData = await new Response(params).text();
-            //             console.log(jobData);
-
-            //             console.log("Insert data!");
-
-            //             let data2 = await fetch("http://localhost:8080/", {
-            //                 method: "POST",
-            //                 headers:{
-            //                     'Content-type': "application/x-www-form-urlencoded" 
-            //                 },
-            //                 body: jobData
-            //             });
-
-            //         }
-
-
             function first_name(fname, fnamespan) {
-                var first_name_format = /^[a-zA-Z ]+$/;
+                let first_name_format = /^[a-zA-Z ]+$/;
                 if (!fname.value) {
                     fnamespan.innerHTML = " *required ";
                     fname.focus();
@@ -239,11 +206,10 @@
                     fnamespan.innerHTML = "";
                     return true;
                 }
-
             }
 
             function ValidateEmail(email1, emailspan) {
-                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if (!email1.value) {
                     emailspan.innerHTML = " *required ";
                     email1.focus();
@@ -256,7 +222,6 @@
                     emailspan.innerHTML = "";
                     return true;
                 }
-
             }
         </script>
 
@@ -264,61 +229,27 @@
 
             <%if(sqlselect[0][0]){%>
                 <script>
-
                     function sub() {
+                        let password_id = document.getElementById("password_id");
+                        let re_password_id = document.getElementById("re_password_id");
+                        let sault_id = document.getElementById("sault_id");
+                        let password_span = document.getElementById("password_span");
+                        let re_password_span = document.getElementById("re_password_span");
+                        let sault_span = document.getElementById("sault_span");
 
-                        var password_id = document.getElementById("password_id");
-                        var re_password_id = document.getElementById("re_password_id");
-                        var sault_id = document.getElementById("sault_id");
-
-                        var password_span = document.getElementById("password_span");
-                        var re_password_span = document.getElementById("re_password_span");
-                        var sault_span = document.getElementById("sault_span");
-
-                        console.log(password_id);
-                        console.log(re_password_id);
-                        console.log(password_span);
-                        console.log(re_password_span);
-                        console.log(sault_id);
-
-                        var res1 = password(password_id, password_span);
-                        var res2 = password(re_password_id, re_password_span);
-                        var res3 = passwordMatch(password_id, re_password_id, re_password_span);
+                        let res1 = password(password_id, password_span);
+                        let res2 = password(re_password_id, re_password_span);
+                        let res3 = passwordMatch(password_id, re_password_id, re_password_span);
 
                         if (res1 == true && res2 == true && res3 == true) {
-
                             return true;
                         } else {
                             return false;
                         }
-
-                        // submit();
-
-
                     }
 
-                    // async function submit(){
-                    //     let formData = document.getElementById("form_1");
-                    //     let data = new FormData(formData);
-                    //     const params = new URLSearchParams(data);
-                    //     const jobData = await new Response(params).text();
-                    //     console.log(jobData);
-
-                    //     console.log("Insert data!");
-
-                    //     let data2 = await fetch("http://localhost:8080/activation/:id", {
-                    //         method: "POST",
-                    //         headers:{
-                    //             'Content-type': "application/x-www-form-urlencoded" 
-                    //         },
-                    //         body: jobData
-                    //     });
-
-                    // }
-
-
                     function password(email1, emailspan) {
-                        var mailformat = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+                        let mailformat = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
                         if (!email1.value) {
                             emailspan.innerHTML = " *required ";
                             email1.focus();
@@ -334,7 +265,6 @@
                     }
 
                     function passwordMatch(a, b, c) {
-
                         if (a.value == b.value) {
                             c.innerHTML = "";
                             return true;
@@ -342,7 +272,6 @@
                             c.innerHTML = "Password Does not match!"
                             return false;
                         }
-
                     }
 
                 </script>

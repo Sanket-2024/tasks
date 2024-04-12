@@ -4,9 +4,6 @@ const body_parser = require('body-parser');
 const md5 = require('md5');
 const jwt = require('jsonwebtoken');
 const cookie_parser = require('cookie-parser');
-
-
-
 const app = express();
 
 app.use(cookie_parser());
@@ -41,7 +38,7 @@ const post_register = async (req, res)=>{
     const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     console.log(arr.length);
 
-    let sault = "";
+    var sault = "";
     let activationCode = "";
 
     for (let i = 0; i < 4; i++) {
@@ -72,8 +69,7 @@ const post_register = async (req, res)=>{
         let sql = `INSERT INTO registrationdetails_tbl(firstname, lastname, email, sault, activation_code) VALUES(?,?,?,?,?);`
 
         const regInsert = await db.promise().query(sql, [fname, lname, email, sault, activationCode], (err, result) => {
-            if (err) throw err;
-            // console.log(result);
+            if (err) throw err;            
 
         });
         console.log(regInsert);
@@ -88,8 +84,6 @@ const post_register = async (req, res)=>{
 };
 
 const get_password = async (req,res)=>{
-
-// app.get('/activation/:id', async (req, res) => {
 
     const id = req.params.id;
     const activationCode = req.query.activationCode;
@@ -110,8 +104,6 @@ const get_password = async (req,res)=>{
 };
 
 const post_password = async (req,res)=>{
-
-// app.post('/activation/:id', async (req, res) => {
 
     let id = req.params.id;
     let re_entered_password = req.body.re_entered_password;
@@ -134,8 +126,6 @@ const post_password = async (req,res)=>{
 
 const get_login = async(req,res)=>{ 
 
-// app.get('/login', (req, res) => {
-
     const id = req.params.id || "";
     let username = null;
     let password = null;
@@ -146,7 +136,7 @@ const get_login = async(req,res)=>{
 
 
 const post_login = async (req,res)=>{
-// app.post('/login', async (req, res) => {
+
 
     const id = req.params.id || "";
     const username = req.body.username;
@@ -155,16 +145,18 @@ const post_login = async (req,res)=>{
     let sql = `SELECT * FROM registrationdetails_tbl WHERE email = '${username}'`;
 
     const registrationData = await db.promise().query(sql);
-    console.log(registrationData);
+    // console.log(registrationData);
 
+    
     const passwordMd5 = md5(password + registrationData[0][0].sault);
     console.log(passwordMd5);
+    
 
     if (username === registrationData[0][0].email && passwordMd5 === registrationData[0][0].password) {
 
         const token = jwt.sign({ id }, `passwordMd5`, { expiresIn: '1h' });
         res.cookie('token', token, { expires: new Date(Date.now() + 900000), httpOnly: true });
-        // res.send("Login Successful!");
+        
         return res.redirect("/home");
 
     } else {

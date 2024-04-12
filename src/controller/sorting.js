@@ -18,7 +18,6 @@ const get_sort = async (req, res) => {
             const order_by = req.query.select || 'stuid';
             const offset = (page - 1) * limit;
             const lastpage = Math.ceil(100000 / limit);
-
             let student_data = `SELECT * FROM student_master_tbl ORDER BY ${order_by} ${order} LIMIT ${limit} offset ${offset}`
 
             db.query(student_data, function (err, result) {

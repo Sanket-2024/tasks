@@ -5,6 +5,7 @@ const cookie_parser = require('cookie-parser');
 // const authenticator_variable = require('./src/middleware/token_file');
 const l = require('./src/routes/authentication');
 const js_route = require('./src/routes/js_excercise');
+const javascript_task_route = require('./src/routes/javascript_task');
 const node_task = require('./src/routes/node_task');
 const search_route = require('./src/routes/searching');
 const filter_route = require('./src/routes/filter');
@@ -23,6 +24,7 @@ app.use(body_parser.urlencoded({extended : true}));
 // app.use(authenticator_variable);
 
 app.use("/",l);
+app.use(javascript_task_route);
 app.use(node_task);
 app.use("/jstask",js_route);
 app.use("/nodetask",search_route);
